@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-black text-white font-sans overflow-x-hidden;
+  min-height: 100vh;
+}
+
+/* --- THE 3D AI ENTITY BACKGROUND --- */
+.ai-entity-layer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #1e1b4b 0%, #000000 100%);
+  perspective: 1000px;
+}
+
+.neural-network {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  transform-style: preserve-3d;
+  animation: rotate-network 30s infinite linear;
+}
+
+.node {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  background: #00f0ff;
+  border-radius: 50%;
+  box-shadow: 0 0 20px #00f0ff, 0 0 40px #00f0ff;
+}
+
+.connection {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.4), transparent);
+  transform-origin: left center;
+}
+
+/* Generating a cloud of nodes using nth-child would be tedious in pure CSS without preprocessor.
+   Instead, we will use a "Orb" effect which is easier to make look like a 3D Entity purely in CSS */
+
+.entity-orb {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 80vmin;
+  height: 80vmin;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, rgba(99, 102, 241, 0.1), transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(236, 72, 153, 0.1), transparent 60%);
+  filter: blur(60px);
+  animation: breathe 8s infinite ease-in-out;
+}
+
+.entity-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotateX(60deg);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  box-shadow: 0 0 50px rgba(0, 240, 255, 0.1);
+}
+
+.entity-ring:nth-child(1) {
+  width: 40vmin;
+  height: 40vmin;
+  animation: spin-ring 10s infinite linear;
+  border-color: rgba(0, 240, 255, 0.3);
+}
+
+.entity-ring:nth-child(2) {
+  width: 60vmin;
+  height: 60vmin;
+  animation: spin-ring 15s infinite linear reverse;
+  border-color: rgba(236, 72, 153, 0.3);
+}
+
+.entity-ring:nth-child(3) {
+  width: 80vmin;
+  height: 80vmin;
+  animation: spin-ring 20s infinite linear;
+  border-color: rgba(168, 85, 247, 0.3);
+}
+
+@keyframes rotate-network {
+  0% {
+    transform: translate(-50%, -50%) rotateY(0deg) rotateX(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotateY(360deg) rotateX(180deg);
+  }
+}
+
+@keyframes spin-ring {
+  0% {
+    transform: translate(-50%, -50%) rotateX(60deg) rotateZ(0deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotateX(60deg) rotateZ(360deg);
+  }
+}
+
+@keyframes breathe {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+/* --- LIQUID GLASS COMPONENTS --- */
+
+.glass-morphism {
+  @apply bg-white/5 backdrop-blur-2xl border border-white/10;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37), inset 0 0 30px rgba(255, 255, 255, 0.02);
+}
+
+.liquid-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.liquid-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: 0.5s;
+}
+
+.liquid-card:hover::before {
+  left: 100%;
+}
+
+.liquid-card:hover {
+  transform: translateY(-5px) scale(1.01);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 50px rgba(0, 240, 255, 0.1);
+}
+
+.text-glow {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.input-liquid {
+  @apply w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white placeholder-white/30 transition-all;
+  backdrop-filter: blur(10px);
+}
+
+.input-liquid:focus {
+  @apply bg-white/10 border-blue-400/50 outline-none ring-2 ring-blue-400/20;
+  box-shadow: 0 0 30px rgba(59, 130, 246, 0.2);
+}

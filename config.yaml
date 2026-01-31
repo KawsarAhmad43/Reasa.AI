@@ -1,0 +1,12 @@
+llm:
+  provider: "ollama" # Options: "ollama", "gemini"
+  model_name: "llama3.2" # or "gemini-2.5-flash"
+  temperature: 0.2
+  base_url: "http://localhost:11434" # for Ollama
+
+api_keys:
+  google_api_key: "" # Required if provider is gemini
+  serper_api_key: "" # Optional: for search capabilities if not using free scraper
+
+search:
+  max_results: 5
