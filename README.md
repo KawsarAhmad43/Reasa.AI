@@ -1,5 +1,5 @@
-# Agentic RAG Research Pipeline
-
+# Reasa.Ai Agentic RAG Research Assistant
+<img width="1919" height="860" alt="Image" src="https://github.com/user-attachments/assets/527e5a79-713e-4851-bb26-b791f0b63a31" />
 ## Project Overview
 This project is a highly efficient, advanced architectural Agentic RAG (Retrieval-Augmented Generation) system designed for researchers. It leverages **LangChain** and **FastAPI** for the backend and a minimalistic **React** frontend. The core purpose is to alleviate the time constraints researchers face by providing autonomous agents that can analyze papers, perform literature reviews, and conduct topic-based research with human-like professional quality.
 
