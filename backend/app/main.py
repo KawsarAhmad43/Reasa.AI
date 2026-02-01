@@ -4,7 +4,7 @@ from app.core.config import settings
 from app.api import routes
 
 app = FastAPI(
-    title="Agentic RAG Research System",
+    title="Reasa.AI - Agentic RAG Research System",
     description="Advanced RAG pipeline for research paper analysis and literature review.",
     version="1.0.0"
 )
