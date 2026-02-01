@@ -48,7 +48,7 @@ This project is a highly efficient, advanced architectural Agentic RAG (Retrieva
 This project follows a clean architecture pattern to separate concerns between the API, the Agentic logic, and the UI.
 
 ```
-agentic-rag-research/
+reasa.ai/
 ├── config.yaml                     # Global configuration (LLM selection, API keys)
 ├── setup.sh                        # Setup script (Linux/Mac/Git Bash)
 ├── setup.ps1                       # Setup script (Windows PowerShell)
